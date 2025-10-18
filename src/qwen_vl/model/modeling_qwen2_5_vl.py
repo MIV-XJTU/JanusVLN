@@ -1586,6 +1586,24 @@ QWEN2_5_VL_INPUTS_DOCSTRING = r"""
         rope_deltas (`torch.LongTensor` of shape `(batch_size, )`, *optional*):
             The rope index difference between sequence length and multimodal rope.
 """
+def slice2d(x, start, end):
+    return x[:, :, start:end, ...]
+
+
+def slice3d(x, start, end):
+    return x[:, :, :, start:end, ...]
+
+
+def slice1d(x, start, end):
+    return x[:, start:end, ...]
+
+
+DIM_TO_SLICE = {
+    1: slice1d,
+    2: slice2d,
+    3: slice3d,
+}
+
 class StartRecentKVCache:
     def __init__(
         self,
