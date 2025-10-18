@@ -1660,6 +1660,7 @@ class Qwen2_5_VLForConditionalGenerationForJanusVLN(Qwen2_5_VLPreTrainedModel, G
         vggt.camera_head = None
         vggt.track_head = None
         self.vggt = vggt
+        self.past_key_values_vggt = None
         for param in self.vggt.parameters():
             param.requires_grad = False
 
@@ -1698,8 +1699,8 @@ class Qwen2_5_VLForConditionalGenerationForJanusVLN(Qwen2_5_VLPreTrainedModel, G
     @classmethod
     def from_pretrained(cls, pretrained_model_name_or_path, *model_args, mode=None, **kwargs):
         vggt_model_path = kwargs.pop("vggt_model_path", None)
-        self.mode = mode
         model = super().from_pretrained(pretrained_model_name_or_path, *model_args, **kwargs)
+        model.mode = mode
         if vggt_model_path:
             print(f"Loading VGGT from {vggt_model_path}")
             vggt = VGGT.from_pretrained(vggt_model_path)
@@ -2016,7 +2017,7 @@ class Qwen2_5_VLForConditionalGenerationForJanusVLN(Qwen2_5_VLPreTrainedModel, G
                                     images = frame.unsqueeze(0).unsqueeze(0) 
                                     aggregator_output = self.vggt.aggregator(
                                         images, 
-                                        past_key_values=past_key_values_vggt,
+                                        past_key_values=self.past_key_values_vggt,
                                         use_cache=True, 
                                         past_frame_idx=k
                                     )
