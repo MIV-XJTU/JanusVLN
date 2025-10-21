@@ -6,14 +6,16 @@ NPROC_PER_NODE=$(nvidia-smi --list-gpus | wc -l)
 
 # MODEL_PATH="Qwen/Qwen2.5-VL-7B-Instruct"  
 # VGGT_MODEL_PATH="facebook/VGGT-1B"
-MODEL_PATH="/home/zengshuang.zs/ckpts/Qwen2.5-VL-7B-Instruct"  
+
+MODEL_PATH="/home/zengshuang.zs/.cache/modelscope/hub/Qwen/Qwen2.5-VL-3B-Instruct"  
 VGGT_MODEL_PATH="/home/zengshuang.zs/ckpts/vggt"
 OUTPUT_DIR="./output"                  
 CACHE_DIR="./cache"                        
 mkdir -p $OUTPUT_DIR
 
 # DATASETS="train_r2r_rxr" # train_r2r_rxr_extra   
-DATASETS="test" # train_r2r_rxr_extra                 
+DATASETS="test"
+               
 
 export NCCL_NVLS_ENABLE=0
 torchrun --nproc_per_node=$NPROC_PER_NODE \
@@ -53,7 +55,7 @@ torchrun --nproc_per_node=$NPROC_PER_NODE \
             --save_total_limit 1 \
             --deepspeed "scripts/zero3.json" \
             --gradient_checkpointing \
-            --dataloader_num_workers 8 \
+            --dataloader_num_workers 4 \
             --group_by_modality_length true \
             --seed 42 \
             --report_to "none" \

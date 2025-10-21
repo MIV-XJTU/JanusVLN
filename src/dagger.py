@@ -8,8 +8,7 @@ import transformers
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from utils.dist import *
 import torch.distributed as dist
-from stream_eval import VLNEvaluator
-from model.stream_video_vln import StreamVLNForCausalLM
+from evaluation import VLNEvaluator
 
 import os
 import random
@@ -39,8 +38,6 @@ from habitat.utils.visualizations.utils import images_to_video, observations_to_
 
 
 from utils.dist import *
-from utils.utils import dict_to_cuda
-from utils.utils import DEFAULT_MEMORY_TOKEN, DEFAULT_VIDEO_TOKEN
 from habitat_extensions.maps import image_resize
 
 
@@ -50,7 +47,7 @@ from io import BytesIO
 from qwen_vl_utils import extract_vision_info
 from transformers import AutoConfig, AutoTokenizer, AutoProcessor
 from qwen_vl.model.vggt.utils.load_fn import load_and_preprocess_images
-from qwen_vl.model.modeling_qwen2_5_vl import Qwen2_5_VLForConditionalGenerationWithVGGT
+from qwen_vl.model.modeling_qwen2_5_vl import Qwen2_5_VLForConditionalGenerationForJanusVLN
 
 from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
 

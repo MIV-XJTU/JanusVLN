@@ -1671,7 +1671,7 @@ class Qwen2_5_VLForConditionalGenerationForJanusVLN(Qwen2_5_VLPreTrainedModel, G
             spatial_merge_size=config.vision_config.spatial_merge_size,
         )
         self.config.reference_frame = getattr(config, "reference_frame", "first")
-        self.lam = config.lam
+        self.lam = getattr(config, "lam", 0.2)
 
         self.kv_cache_vggt = StartRecentKVCache(
                 start_size=8,          
@@ -2006,6 +2006,7 @@ class Qwen2_5_VLForConditionalGenerationForJanusVLN(Qwen2_5_VLPreTrainedModel, G
                                 
                                 # aggregated_tokens_list, patch_start_idx = self.vggt.aggregator(images_vggt[i][None])
                                 # features = aggregated_tokens_list[-2][0,:, patch_start_idx:]
+                                
 
                                 if self.mode == "evaluation": 
                                     if self.past_key_values_vggt is None:
@@ -2028,8 +2029,8 @@ class Qwen2_5_VLForConditionalGenerationForJanusVLN(Qwen2_5_VLPreTrainedModel, G
                                         aggregated_tokens, patch_start_idx = aggregator_output
 
                                     self.past_key_values_vggt = past_key_values_vggt
-                                    if self.past_key_values_vggt is not None:
-                                                self.past_key_values_vggt = self.kv_cache_vggt(self.past_key_values_vggt)
+                                    if self.mode == "evaluation" and self.past_key_values_vggt is not None:
+                                        self.past_key_values_vggt = self.kv_cache_vggt(self.past_key_values_vggt)
 
                                     features = aggregated_tokens[-2][0,:, patch_start_idx:]
 

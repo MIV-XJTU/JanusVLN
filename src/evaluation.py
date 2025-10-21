@@ -34,7 +34,7 @@ from habitat.config.default_structured_configs import (
 from habitat.utils.visualizations import maps
 from habitat.utils.visualizations.utils import images_to_video, observations_to_image
 
-
+from utils.dist import *
 import base64
 from datetime import datetime
 from io import BytesIO
@@ -199,7 +199,7 @@ class VLNEvaluator:
                     
                     
                     action = self.model.call_model(images, episode_instruction,step_id)[0]
-                    # print(action, flush=True)
+                    print(action, flush=True)
                     
                     if info['top_down_map'] is not None and should_save_video:
                         frame = observations_to_image({'rgb':observations['rgb']}, info)

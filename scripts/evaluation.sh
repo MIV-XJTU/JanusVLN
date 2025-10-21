@@ -1,9 +1,9 @@
 export MAGNUM_LOG=quiet HABITAT_SIM_LOG=quiet
 MASTER_PORT=$((RANDOM % 101 + 20000))
 
-CHECKPOINT="/home/zengshuang.zs/ckpts/7B_v9.14_scalevln_dagger_r2r_rxr"
+CHECKPOINT="/data/zengshuang.zs/ckpts/7B_v9.1_r2r_rxr"
 echo "CHECKPOINT: ${CHECKPOINT}"
-OUTPUT_PATH="/home/zengshuang.zs/eval/7B_v9.14_scalevln_dagger_r2r_rxr"
+OUTPUT_PATH="/home/zengshuang.zs/eval/test"
 echo "OUTPUT_PATH: ${OUTPUT_PATH}"
 CONFIG="config/vln_r2r.yaml"
 echo "CONFIG: ${CONFIG}"
