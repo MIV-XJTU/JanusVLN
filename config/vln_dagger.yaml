@@ -46,7 +46,6 @@ habitat:
         type: SPL
       oracle_success:
         type: OracleSuccess
-        # success_distance: 3.0
       oracle_navigation_error:
         type: OracleNavigationError
       pl:

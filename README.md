@@ -19,9 +19,10 @@ Mu Xu<sup>1</sup>,
 
 [![arXiv](https://img.shields.io/badge/arXiv-2509.22548-red)](https://arxiv.org/abs/2509.22548)
 [![Website](https://img.shields.io/badge/🌐-Website-green)](https://miv-xjtu.github.io/JanusVLN.github.io/)
-[![Video](https://img.shields.io/badge/🎥-Live_Demo-purple)](https://www.youtube.com/watch?v=U0IpLJOu48Y)
-[![HuggingFace](https://img.shields.io/badge/🤗-HF_Model-yellow)](https://huggingface.co/PosterCraft)
-[![HF Demo](https://img.shields.io/badge/💾-HF_Data-orange)](https://huggingface.co/spaces/Ephemeral182/PosterCraft)
+[![Video](https://img.shields.io/badge/🎥-Live_Demo-purple)](https://www.youtube.com/watch?v=SfrkZks_XE8)
+[![HuggingFace](https://img.shields.io/badge/🚀-Model_Base-yellow)](https://www.modelscope.cn/models/misstl/JanusVLN_Base)
+[![HuggingFace](https://img.shields.io/badge/🏆-Model_Extra-yellow)](https://www.modelscope.cn/models/misstl/JanusVLN_Extra)
+[![HF Demo](https://img.shields.io/badge/💾-Data-orange)](https://www.modelscope.cn/datasets/misstl/JanusVLN_Trajectory_Data)
 
 https://github.com/user-attachments/assets/bc477e20-2dd2-4927-b382-f483f578f3e1
 
@@ -90,7 +91,7 @@ pip install -e .
 
 3、**Collected Trajectory Data**
 
-We provide pre-collected observation-action trajectory data for training. R2R and RxR are collected following VLN-CE. ScaleVLN is collected following StreamVLN. DAgger data is collected using [JanusVLN (R2R-CE & RxR-CE)](). Note: It is best to collect DAgger data using your own base model. Download the collected trajectory data from [Hugging Face]() and extract it to the `data/trajectory_data/` directory.
+We provide pre-collected observation-action trajectory data for training. R2R and RxR are collected following VLN-CE. ScaleVLN is collected following StreamVLN. DAgger data is collected using [JanusVLN_Base](https://www.modelscope.cn/models/misstl/JanusVLN_Base). Note: It is best to collect DAgger data using your own base model. Download the collected trajectory data from [ModelScope](https://www.modelscope.cn/datasets/misstl/JanusVLN_Trajectory_Data) and extract it to the `data/trajectory_data/` and `data/dagger_data/` directory.
 
 Your final folder structure should look like this:
 ```bash
@@ -122,12 +123,10 @@ data/
 │       ├── 1LXtFkjw3qL/
 │       └── ...
 ├── trajectory_data/
-│   ├── R2R/
-│   │   ├── images/
-│   │   └── annotations.json
-│   ├── RxR/
-│   │   ├── images/
-│   │   └── annotations.json
+│   ├── R2R-CE-640x480/
+│   │   └── images/   
+│   ├── RxR-CE-640x480/
+│   │   └── images/ 
 │   └── ScaleVLN/
 │       ├── images/
 │       └── annotations.json
@@ -135,10 +134,7 @@ data/
     ├── R2R/
     │   ├── images/
     │   └── annotations.json
-    ├── RxR/
-    │   ├── images/
-    │   └── annotations.json
-    └── EnvDrop/
+    └── RxR/
         ├── images/
         └── annotations.json
 ```
@@ -170,11 +166,11 @@ We have separately provided two sets of JanusVLN model weights to distinguish wh
     <tr>
         <td rowspan="3"><b>JanusVLN</b></td>
         <td>R2R-CE,RxR-CE</td>
-        <td><a href="https://huggingface.co/lpiccinelli/unik3d-vits">JanusVLN_Base</a></td>
+        <td><a href="https://www.modelscope.cn/models/misstl/JanusVLN_Base">JanusVLN_Base</a></td>
     </tr>
     <tr>
         <td>R2R-CE,RxR-CE,DAgger,ScaleVLN</td>
-        <td><a href="https://huggingface.co/lpiccinelli/unik3d-vitb">JanusVLN_Extra</a></td>
+        <td><a href="https://www.modelscope.cn/models/misstl/JanusVLN_Extra">JanusVLN_Extra</a></td>
     </tr>
 </table>
 
@@ -221,7 +217,7 @@ We have separately provided two sets of JanusVLN model weights to distinguish wh
 Use multiple GPUs to infer the model for evaluation:
 
 ```bash
-bash scripts/train_extra.sh
+bash scripts/evaluation.sh
 ```
 
 <p align="right"><a href="#readme-top"><img src=https://img.shields.io/badge/back%20to%20top-red?style=flat

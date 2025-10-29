@@ -24,7 +24,7 @@ DAGGER_COMMIT_FREQ=50 # dump data every DAGGER_COMMIT_FREQ updates
 DAGGER_P=0 # allow model inference
 DAGGER_DATA_IT=3 # not used if DAGGER_P=0
 
-MID_RUN_NAME="/data/zengshuang.zs/ckpts/7B_v9.1_r2r_rxr"
+MID_RUN_NAME="JanusVLN_Base"
 
 CHECKPOINT="${MID_RUN_NAME}"
 echo "CHECKPOINT: ${CHECKPOINT}"

@@ -58,12 +58,6 @@ SCAN2CAP = {
 #     "tag": "train_r2r_rxr"
 # }
 
-TEST = {
-    "annotation_path": "/home/zengshuang.zs/data/test.json",
-    "data_path": "",
-    "tag": "test"
-}
-
 
 # TRAIN_R2R_RxR_EXTRA = {
 #     "annotation_path": "path-to-train_r2r_rxr_extra.json",
@@ -83,7 +77,6 @@ data_dict = {
     "scan2cap": SCAN2CAP,
     # "train_r2r_rxr": TRAIN_R2R_RxR,
     # "train_r2r_rxr_extra": TRAIN_R2R_RxR_EXTRA
-    "test": TEST
 }
 
 

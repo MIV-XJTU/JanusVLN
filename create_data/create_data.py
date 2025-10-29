@@ -125,27 +125,27 @@ def main():
     all_results = []
 
     # --- ScaleVLN Dataset ---
-    img_root_scalevln = "/mnt/nas-data-5/zengshuang.zs/ScaleVLN/images"
-    json_path_scalevln = "/mnt/nas-data-5/zengshuang.zs/ScaleVLN/annotations.json"
+    img_root_scalevln = "data/trajectory_data/ScaleVLN/images"
+    json_path_scalevln = "data/trajectory_data/ScaleVLN/annotations.json"
     act_map_scalevln = ["STOP", "MOVE_FORWARD", "TURN_LEFT", "TURN_RIGHT"]
 
     # --- DAgger Dataset ---
-    img_root_dagger_r2r = "/mnt/nas-data-5/zengshuang.zs/data/dagger_data/R2R/images"
-    json_path_dagger_r2r = "/mnt/nas-data-5/zengshuang.zs/data/dagger_data/R2R/annotations.json"
+    img_root_dagger_r2r = "data/dagger_data/R2R/images"
+    json_path_dagger_r2r = "data/dagger_data/R2R/annotations.json"
     act_map_dagger_r2r = ["STOP", "MOVE_FORWARD", "TURN_LEFT", "TURN_RIGHT"]
 
 
-    img_root_dagger_rxr = "/mnt/nas-data-5/zengshuang.zs/data/dagger_data/RxR/images"
-    json_path_dagger_rxr = "/mnt/nas-data-5/zengshuang.zs/data/dagger_data/RxR/annotations.json"
+    img_root_dagger_rxr = "data/dagger_data/RxR/images"
+    json_path_dagger_rxr = "data/dagger_data/RxR/annotations.json"
     act_map_dagger_rxr = ["STOP", "MOVE_FORWARD", "TURN_LEFT", "TURN_RIGHT"]
 
     # --- R2R Dataset ---
-    img_root_r2r = "/mnt/nas-data-5/zengshuang.zs/data/R2R-CE-640x480/train"
-    json_path_r2r = "/mnt/nas-data-5/zengshuang.zs/VLN-CE/data/datasets/r2r/train/train.json.gz"
+    img_root_r2r = "data/trajectory_data/R2R/train"
+    json_path_r2r = "data/datasets/r2r/train/train.json.gz"
     
     # --- RxR Dataset ---
-    img_root_rxr = "/mnt/nas-data-5/zengshuang.zs/data/RxR-CE-640x480/train"
-    json_path_rxr = "/mnt/nas-data-5/zengshuang.zs/VLN-CE/data/datasets/rxr/train/train_guide.json.gz"
+    img_root_rxr = "data/trajectory_data/RxR/train"
+    json_path_rxr = "data/datasets/rxr/train/train_guide.json.gz"
 
     print("Loading JSON data...")
 
@@ -219,7 +219,6 @@ def main():
 
 
 if __name__ == "__main__":
-
     main()
 
 

@@ -1982,7 +1982,6 @@ class Qwen2_5_VLForConditionalGenerationForJanusVLN(Qwen2_5_VLPreTrainedModel, G
             self.vggt.eval()
             inputs_embeds = self.model.embed_tokens(input_ids)
             if pixel_values is not None:
-                # add spatial features
                 batch_size = inputs_embeds.shape[0]
                 image_embeds_3d = []
                 teacher_outputs = []
@@ -2004,10 +2003,6 @@ class Qwen2_5_VLForConditionalGenerationForJanusVLN(Qwen2_5_VLPreTrainedModel, G
                                 if not self.config.reference_frame=="first":
                                     images_vggt[i] = torch.flip(images_vggt[i], dims=(0,))
                                 
-                                # aggregated_tokens_list, patch_start_idx = self.vggt.aggregator(images_vggt[i][None])
-                                # features = aggregated_tokens_list[-2][0,:, patch_start_idx:]
-                                
-
                                 if self.mode == "evaluation": 
                                     if self.past_key_values_vggt is None:
                                         self.past_key_values_vggt = [None] * self.vggt.aggregator.depth

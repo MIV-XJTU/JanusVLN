@@ -4,17 +4,14 @@ MASTER_ADDR="127.0.0.1"
 MASTER_PORT=$(shuf -i 20000-29999 -n 1)     
 NPROC_PER_NODE=$(nvidia-smi --list-gpus | wc -l)  
 
-# MODEL_PATH="Qwen/Qwen2.5-VL-7B-Instruct"  
-# VGGT_MODEL_PATH="facebook/VGGT-1B"
+MODEL_PATH="Qwen/Qwen2.5-VL-7B-Instruct"  
+VGGT_MODEL_PATH="facebook/VGGT-1B"
 
-MODEL_PATH="/home/zengshuang.zs/.cache/modelscope/hub/Qwen/Qwen2.5-VL-3B-Instruct"  
-VGGT_MODEL_PATH="/home/zengshuang.zs/ckpts/vggt"
-OUTPUT_DIR="./output"                  
+OUTPUT_DIR="./JanusVLN_Base"                  
 CACHE_DIR="./cache"                        
 mkdir -p $OUTPUT_DIR
 
-# DATASETS="train_r2r_rxr" # train_r2r_rxr_extra   
-DATASETS="test"
+DATASETS="train_r2r_rxr"   
                
 
 export NCCL_NVLS_ENABLE=0
@@ -32,7 +29,7 @@ torchrun --nproc_per_node=$NPROC_PER_NODE \
             --cache_dir $CACHE_DIR \
             --bf16 \
             --per_device_train_batch_size 1 \
-            --gradient_accumulation_steps 1 \
+            --gradient_accumulation_steps 8 \
             --learning_rate 2e-5 \
             --mm_projector_lr 1e-5 \
             --vision_tower_lr 1e-6 \
@@ -55,9 +52,9 @@ torchrun --nproc_per_node=$NPROC_PER_NODE \
             --save_total_limit 1 \
             --deepspeed "scripts/zero3.json" \
             --gradient_checkpointing \
-            --dataloader_num_workers 4 \
+            --dataloader_num_workers 8 \
             --group_by_modality_length true \
             --seed 42 \
             --report_to "none" \
             --reference_frame first \
-            # > ${OUTPUT_DIR}/train.log 2>&1
+            > ${OUTPUT_DIR}/train.log 2>&1
