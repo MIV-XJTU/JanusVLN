@@ -114,10 +114,10 @@ data/
 │   └── scalevln/
 │       └── scalevln_subset_150k.json.gz
 ├── scene_datasets/
-│   └── hm3d/
-│       ├── 00000-kfPV7w3FaU5/
-│       ├── 00001-UVdNNRcVyV1/
-│       └── ...
+│   ├── hm3d/
+│   │   ├── 00000-kfPV7w3FaU5/
+│   │   ├── 00001-UVdNNRcVyV1/
+│   │   └── ...
 │   └── mp3d/
 │       ├── 17DRP5sb8fy/
 │       ├── 1LXtFkjw3qL/
