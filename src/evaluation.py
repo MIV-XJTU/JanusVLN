@@ -199,7 +199,6 @@ class VLNEvaluator:
                     
                     
                     action = self.model.call_model(images, episode_instruction,step_id)[0]
-                    print(action, flush=True)
                     
                     if info['top_down_map'] is not None and should_save_video:
                         frame = observations_to_image({'rgb':observations['rgb']}, info)
