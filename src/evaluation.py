@@ -351,8 +351,8 @@ class JanusVLN_Inference:
             do_rescale=False
         )
         device = self.model.device
-        if getattr(self.model.config, "use_vggt_feature", False):
-            inputs["images_vggt"] = [feat.to(device) for feat in images_vggt]
+
+        inputs["images_vggt"] = [feat.to(device) for feat in images_vggt]
         inputs = inputs.to(device)
     
         if "max_new_tokens" not in gen_kwargs:

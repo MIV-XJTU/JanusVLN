@@ -38,7 +38,8 @@ https://github.com/user-attachments/assets/bc477e20-2dd2-4927-b382-f483f578f3e1
   <img src="assets/overview.jpg" alt="JanusVLN" width="888"/>
 </div>
 
-
+## 📢 News
+[2025-11-06] Due to the previous upload of incorrect weights for the `JanusVLN_Extra` model, if you need to directly infer, please download the correct weights from [JanusVLN_Extra](https://www.modelscope.cn/models/misstl/JanusVLN_Extra) again.
 
 ## Table of Contents
 - [🛠️ Installation](#-Installation)
